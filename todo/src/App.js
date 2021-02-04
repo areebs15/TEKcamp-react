@@ -8,26 +8,24 @@ import Todo from './Components/Todo';
 function App() {
 
   const [todos, setTodos] = useState(["eat","sleep","code","pray","repeat"]);  //sample todo items.  these will need to be changed in your app.  Just filler todos, although they are quite important!
-  const [addToList, setAddToList] = React.useState({ newToDo : ""});
+  const [inputVal, setInputVal] = React.useState('');
+
 
   const handleChange = (e) => {
-    
-    console.log(e.target.name);
-    setAddToList({
-      ...addToList,
-      [e.target.name] : e.target.value
-    })
-    console.log(addToList);
+    setInputVal(e.target.value);
   }
+  const handleSubmit = (e) => {setTodos(todos => [...todos, e.target.value])}
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //let selectUl = document.querySelector('ul'),
-    //let listItem = document.createElement('li'),
-    //let selectUl.appendChild(listItem.value),
-    console.log(addToList);
+  const handleDelete = (e) => {
+    console.log(e.target.value);
+    //let newTodoArr = e.target.value.split(",");
+    setTodos(todos => [...todos.splice(1,1), e.target.value]);
+    console.log(todos);
+    //newTodoArr.splice(1,1);
+    //console.log(newTodoArr);
   }
+   
+    //console.log(e.target);
 
   return (
     <div className="App">
@@ -36,17 +34,12 @@ function App() {
         <div>
          <br/>
           <p>Create a Todo List App</p>
-          <Todo item="1"/>
-          <Todo item="2"/>
-          <Todo item="3"/>
-          {todos.map( (t,i) => <Todo key={i} item={t}/>)}
-          <ul>
-            hello world
-          </ul>
-          <form onSubmit={handleSubmit}>
-            <input name="newToDo" onChange={handleChange} placeholder="Enter a task"/>
-            <button type="submit">Add</button>
-          </form>
+          {
+          todos.map((t,i) => <span><Todo key={i} item={t}/>
+          <button onClick={handleDelete} value={todos}>delete</button></span>)
+          }
+          <input type="text" onChange={handleChange} value={inputVal} placeholder="Enter a task"/>
+          <button onClick={handleSubmit} value={inputVal}>Add</button>
         </div>
       </header>
     </div>
