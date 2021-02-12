@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,32 +12,56 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-.complete {
-  text-decoration: line-through;
-}
-
-
-ul {
-  display:flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 1px;
-}
-
 ul:nth-child(odd) {
   background-color: whitesmoke;
   color: black;
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
 }
+
+input {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: white;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+/*css for todos.jsx*/
+.items {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+button {
+  margin: 10px;
+  background-color: #d1624e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px 2px 2px 2px;
+  font-family: Tahoma, sans-serif;
+}
+/*END css for todos.jsx*/

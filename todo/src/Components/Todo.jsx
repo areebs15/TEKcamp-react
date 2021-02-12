@@ -4,9 +4,11 @@ function Todo(props) {
 
     return (
         <li>
-            {props.item}
-            <button onClick={props.handleDelete} value={props.item}>delete</button>
-            <button value={props.i} onClick={props.handleComplete}>complete</button>
+            <p className="items">{props.item}</p>
+            <div className="buttons">
+                <button onClick={props.handleDelete} value={props.item}>delete</button>
+                <button value={props.item} onClick={props.handleComplete}>complete</button>
+            </div>
         </li>
     )
 }

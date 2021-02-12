@@ -6,52 +6,46 @@ import Todo from './Components/Todo';
 
 function App() {
 
-  const [todos, setTodos] = useState(["eat","sleep","code","pray","repeat"]);  //sample todo items.  these will need to be changed in your app.  Just filler todos, although they are quite important!
+  const [todos, setTodos] = useState(["Walk the dog","Work on capstone assignment","eat lunch with friends","go to bed"]);
   const [inputVal, setInputVal] = useState('');
-  const [completeVal, setCompleteVal] = useState('incomplete');
   const [todosD, setTodosD] = useState(todos);
-
 
   const handleChange = (e) => {
     setInputVal(e.target.value);
   }
   const handleSubmit = (e) => {
     setTodos([...todos, e.target.value]);
-    console.log(todos);
+    console.log(e.target.value);
   }
   const handleDelete = (e) => {
-    console.log(e.target.value);
     let indexV = todos.indexOf(e.target.value);
-    console.log(indexV);
     setTodosD(todos.splice(indexV, 1));
   }
   const handleComplete = (e) => {
-    console.log(e.target.value);
-    console.log(e.target);
-    if (completeVal === 'incomplete'){
-      setCompleteVal('complete');
-    } else {
-      setCompleteVal('incomplete');
-    }
-    console.log(completeVal);
-
+    let todoValue = e.target.value;
+    todoValue += ' COMPLETE';
+    let indexOfTodos = todos.indexOf(e.target.value);
+    setTodosD(todos.splice(indexOfTodos, 1, todoValue));
   } 
+  const handleDeleteAll = (e) => {
+    setTodos([]);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <div className="list">
          <br/>
-          <p>Todo List</p>
+          <h1>Todo List</h1>
           {
           todos.map((t,i) => 
-          <ul id="val" className={completeVal}><Todo key={i} item={t} handleDelete={handleDelete} todos={todos} i={i} handleComplete={handleComplete}/>
-            {/* <button onClick={handleDelete} value={todos}>delete</button>
-            <button value={i} onClick={handleComplete}>complete</button> */}
+          <ul>
+            <Todo key={i} item={t} handleDelete={handleDelete} todos={todos} i={i} handleComplete={handleComplete}/>
           </ul>)
           }
           <input type="text" onChange={handleChange} value={inputVal} placeholder="Enter a task"/>
           <button onClick={handleSubmit} value={inputVal}>Add</button>
+          <button onClick={handleDeleteAll}>Delete All</button>
         </div>
       </header>
     </div>
