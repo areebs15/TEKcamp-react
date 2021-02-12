@@ -19,7 +19,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -27,13 +26,21 @@
 .App-link {
   color: #61dafb;
 }
-
-ul {
-  list-style-type: none;
+.complete {
+  text-decoration: line-through;
 }
 
-li {
-  background-color: black;
+
+ul {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1px;
+}
+
+ul:nth-child(odd) {
+  background-color: whitesmoke;
+  color: black;
 }
 
 
