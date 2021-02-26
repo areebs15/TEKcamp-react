@@ -1,10 +1,15 @@
 import React from 'react'
 
 function Todo(props) {
+
     return (
-        <div>
-            {props.item}
-        </div>
+        <li>
+            <p className="items">{props.item}</p>
+            <div className="buttons">
+                <button onClick={props.handleDelete} value={props.item}>delete</button>
+                <button value={props.item} onClick={props.handleComplete}>complete</button>
+            </div>
+        </li>
     )
 }
 
